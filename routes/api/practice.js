@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const controlBarkWorker = require('../../workers/barkWorker');
+const functionSortWorker = require('../../workers/sortWorker')
 
 /// route: GET /api/practice/
 router.get('/', (req, res) => res.json({ status: "success"}));
@@ -18,6 +19,11 @@ router.get('/start/:num', (req, res) => {
 router.get('/stop',(req,res) => {
     controlBarkWorker(0,'stop');
     return res.json({ status: 'worker stopped'});
+});
+
+router.post('/sort', (req, res) => {
+    functionSortWorker();
+    return res.json({ status: 'started sorting names' });
 });
 
 module.exports = router;

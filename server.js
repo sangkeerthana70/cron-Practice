@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 const app = express();
 
 //require routes/api/practice.js file
-const practice1 = require('./routes/api/practice1');
+const practice = require('./routes/api/practice');
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -14,7 +14,7 @@ app.get("/", (req,res) => {
     res.send("Hello");
 });
 
-app.use('/api/practice1', practice1);
+app.use('/api/practice', practice);
 
 const port = process.env.PORT || 5000;
 
