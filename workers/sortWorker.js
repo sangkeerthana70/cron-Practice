@@ -1,14 +1,17 @@
 const CronJob = require('cron').CronJob;
 
-const functionSortWorker = (names) => {
-
-    var sortWorker = new CronJob(
-        () => {
-            var sortNames = [];
-            var sortedNames = sortNames.sort();
-            console.log("The names are sorted " + sortedNames);
-        }
-    ) 
+const sortNames = (names) => {
+    const sortWorker = new CronJob(
+        "* * * * *",
+        function () {
+            this.stop();
+            console.log("sorted names : " + names.sort());
+        },
+        null,
+        false,
+        "America/New_York"
+    );
+    sortWorker.start();
 }
 
-module.exports = functionSortWorker;
+module.exports = sortNames;
